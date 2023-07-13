@@ -1,5 +1,10 @@
 version: "3"
 services:
+#  bot:
+#    depends_on: [wg-easy]
+#    restart: unless-stopped
+#    image: "bennyhils/bot"
+
   unbound:
     image: "mvance/unbound:1.17.0"
     container_name: unbound
@@ -22,7 +27,7 @@ services:
       - WG_ALLOWED_IPS=10.2.0.0/24, 0.0.0.0/0, ::/0
       - WG_PERSISTENT_KEEPALIVE=25
       - WG_MTU=1280
-    image: ditek/wg-easy
+    image: bennyhils/wg-easy
     container_name: wg-easy
     volumes:
       - .:/etc/wireguard
